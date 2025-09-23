@@ -1,15 +1,10 @@
-# app.R
-
-# Load necessary libraries
 library(shiny)
 library(DT)
 library(dplyr)
 library(ggplot2)
 
-# Define UI for application
 ui <- fluidPage(
   
-  # Add custom CSS styling
   tags$head(
     tags$style(HTML("
       /* Body and background */
@@ -73,10 +68,9 @@ ui <- fluidPage(
     "))
   ),
   
-  # Application title
   titlePanel("Personal Budget Tracker"),
   
-  # Sidebar with input controls
+  # Sidebar 
   sidebarLayout(
     sidebarPanel(
       h3("Add New Transaction"),
@@ -87,7 +81,6 @@ ui <- fluidPage(
       actionButton("add_transaction", "Add Transaction", class = "btn-primary")
     ),
     
-    # Main panel for displaying outputs with a new layout
     mainPanel(
       fluidRow(
         column(12,
@@ -111,7 +104,6 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic
 server <- function(input, output) {
   
   # Reactive value to store transactions
@@ -125,7 +117,6 @@ server <- function(input, output) {
   
   # Observe event for adding a new transaction
   observeEvent(input$add_transaction, {
-    # Corrected function name here:
     new_row <- data.frame(
       Date = input$date,
       Category = input$category,
@@ -138,7 +129,6 @@ server <- function(input, output) {
     updated_transactions <- rbind(current_transactions, new_row)
     transactions(updated_transactions)
     
-    # Clear input fields after adding
     updateTextInput(getDefaultReactiveDomain(), "category", value = "")
     updateNumericInput(getDefaultReactiveDomain(), "amount", value = 0)
     updateDateInput(getDefaultReactiveDomain(), "date", value = Sys.Date())
@@ -207,5 +197,5 @@ server <- function(input, output) {
   })
 }
 
-# Run the application
 shinyApp(ui = ui, server = server)
+
