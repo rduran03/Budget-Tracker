@@ -1,4 +1,4 @@
-library(shiny)
+library(shiny)  
 library(DT)
 library(dplyr)
 library(ggplot2)
@@ -198,5 +198,6 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
+
 
 
