@@ -70,7 +70,6 @@ ui <- fluidPage(
   
   titlePanel("Personal Budget Tracker"),
   
-  # Sidebar 
   sidebarLayout(
     sidebarPanel(
       h3("Add New Transaction"),
@@ -198,6 +197,7 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
+
 
 
 
