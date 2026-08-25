@@ -113,7 +113,6 @@ server <- function(input, output) {
     stringsAsFactors = FALSE
   ))
   
-  # Observe event for adding a new transaction
   observeEvent(input$add_transaction, {
     new_row <- data.frame(
       Date = input$date,
