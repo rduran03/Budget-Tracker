@@ -131,7 +131,6 @@ server <- function(input, output) {
     updateDateInput(getDefaultReactiveDomain(), "date", value = Sys.Date())
   })
   
-  # Render the transactions table
   output$transactions_table <- renderDT({
     datatable(
       transactions(),
@@ -140,7 +139,6 @@ server <- function(input, output) {
     )
   })
   
-  # Calculate and display balance summary
   output$balance_summary <- renderPrint({
     df <- transactions()
     if (nrow(df) == 0) {
@@ -165,7 +163,6 @@ server <- function(input, output) {
     }
   })
   
-  # Render the expenses plot
   output$expenses_plot <- renderPlot({
     df <- transactions()
     if (nrow(df) > 0) {
