@@ -105,7 +105,6 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   
-  # Reactive value to store transactions
   transactions <- reactiveVal(data.frame(
     Date = as.Date(character()),
     Category = character(),
